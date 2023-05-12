@@ -1,6 +1,6 @@
-package com.example.pp3.service;
+package com.example.pp3.Service;
 
-import com.example.pp3.model.User;
+import com.example.pp3.Model.User;
 
 import java.util.List;
 

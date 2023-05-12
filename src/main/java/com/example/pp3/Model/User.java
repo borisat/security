@@ -1,4 +1,4 @@
-package com.example.pp3.model;
+package com.example.pp3.Model;
 
 import jakarta.persistence.*;
 

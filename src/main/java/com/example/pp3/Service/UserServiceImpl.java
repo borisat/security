@@ -1,7 +1,7 @@
-package com.example.pp3.service;
+package com.example.pp3.Service;
 
 import com.example.pp3.DAO.UserDAO;
-import com.example.pp3.model.User;
+import com.example.pp3.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,14 +33,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByID(int id) {
-        Optional<User> optionalUser = userDAO.findById(id);
-        User user = null;
-
-        if (optionalUser.isPresent()) {
-            user = optionalUser.get();
-        } else {
-            throw new RuntimeException("User not found by ID:: " + id);
-        }
-        return user;
+        return userDAO.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found by ID:: " + id));
     }
 }
