@@ -34,6 +34,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByID(int id) {
         return userDAO.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found by ID:: " + id));
+                .orElseThrow(() -> new RuntimeException("User not found by ID::  " + id));
     }
 }
