@@ -14,8 +14,15 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/")
-    public String redirect() {
-        return "redirect:/users";
+    @ResponseBody
+    public String hello() {
+        return "<h1>Hello</h1>";
+    }
+
+    @GetMapping("/user")
+    @ResponseBody
+    public String user() {
+        return "<h1>User info here</h1>";
     }
 
     @GetMapping("/users")
