@@ -27,8 +27,10 @@ public class User implements UserDetails {
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @Column(name = "roles")
+    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Set<Role> roles;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -87,10 +89,15 @@ public class User implements UserDetails {
         this.email = email;
     }
 
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
+
     public User() {
     }
 
-    public <T> User(long l, String test, String test1, Set<T> role_user) {
+    public <T> User(long l, String test, String test1, Set<T> roleUser) {
     }
 
     public String getName() {

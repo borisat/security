@@ -5,18 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9111d2af-f5e2-4172-ad24-2b2614b780da" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Config/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Config/SuccessUserHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Model/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Service/UserDetailsServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/users/user.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/CommandLineAppStartupRunner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/DAO/RoleDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Exception/ControllerException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/import.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/users/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/users/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/Config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/Config/SuccessUserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Config/SuccessUserHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/DAO/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/Model/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Model/Role.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/Service/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Service/UserDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/Service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/users/edit_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/users/edit_user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/users/new_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/users/new_user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/users/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/users/user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/users/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/users/users.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,11 +64,12 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "C:/Users/ноут/Downloads/SpringBootRegistrationLoginAddRoles/SpringBootRegistrationLoginAddRoles",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager",
-    "spring.configuration.checksum": "7b83b395a9a3950d1c0057fe4b02546f"
+    "spring.configuration.checksum": "23005b4022e8891e764e683d64818988"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -120,7 +129,8 @@
       <workItem from="1683797839097" duration="1422000" />
       <workItem from="1683799322089" duration="13515000" />
       <workItem from="1683875035576" duration="2981000" />
-      <workItem from="1684145188198" duration="21260000" />
+      <workItem from="1684145188198" duration="23908000" />
+      <workItem from="1684266758703" duration="24012000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1683908429968</created>
@@ -136,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683909023472</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="commit">
+      <created>1684181541090</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1684181541090</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,27 +173,19 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit" />
     <option name="LAST_COMMIT_MESSAGE" value="commit" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/pp3/Config/SecurityConfig.java</url>
-          <line>32</line>
-          <properties class="com.example.pp3.Config.SecurityConfig" method="configure">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/pp3/Controller/UserController.java</url>
+          <line>28</line>
+          <properties class="com.example.pp3.Controller.UserController" method="user">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/pp3/Config/SuccessUserHandler.java</url>
-          <line>17</line>
-          <properties class="com.example.pp3.Config.SuccessUserHandler" method="onAuthenticationSuccess">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="14" />
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

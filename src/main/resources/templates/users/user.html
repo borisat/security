@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>User info</title>
 </head>
 <body>
+
+<h1>Welcome, <span th:text="${username}"></span>!</h1>
+
+<h4><p>Your email is <span th:text="${email}"></span>.</p>
+</h4>
+
+<h4><p>Your age is <span th:text="${age}"></span>.</p>
+</h4>
+
+<h4><p>Your pass is <span th:text="${pass}"></span>.</p>
+</h4>
+
+<h4><p>Your roles are: <span th:text="${roles}"></span>.</p>
+</h4>
+<a th:href="@{/logout}">Logout</a>
 
 </body>
 </html>
