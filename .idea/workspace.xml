@@ -5,25 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9111d2af-f5e2-4172-ad24-2b2614b780da" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/CommandLineAppStartupRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/DAO/RoleDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Exception/ControllerException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/import.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/users/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/users/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/Config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/Config/SuccessUserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Config/SuccessUserHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/Model/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Model/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/DAO/RoleDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/DAO/RoleDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/Service/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Service/UserDetailsServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/Service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/users/edit_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/users/edit_user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/users/new_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/users/new_user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/users/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/users/user.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/users/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/users/users.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -130,7 +118,7 @@
       <workItem from="1683799322089" duration="13515000" />
       <workItem from="1683875035576" duration="2981000" />
       <workItem from="1684145188198" duration="23908000" />
-      <workItem from="1684266758703" duration="24012000" />
+      <workItem from="1684266758703" duration="33732000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1683908429968</created>
@@ -153,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684181541090</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="commit">
+      <created>1684333963188</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1684333963188</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,7 +182,21 @@
           </properties>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/pp3/Service/UserServiceImpl.java</url>
+          <line>42</line>
+          <properties class="com.example.pp3.Service.UserServiceImpl" method="makeAdmin">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.example.pp3.Model.User" memberName="roles" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

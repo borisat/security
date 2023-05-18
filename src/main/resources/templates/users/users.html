@@ -37,6 +37,7 @@
             <th>Name</th>
             <th>Age</th>
             <th>Email</th>
+            <th>Roles</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -46,8 +47,14 @@
             <td>[[${user.name}]]</td>
             <td>[[${user.age}]]</td>
             <td>[[${user.email}]]</td>
+            <td>
+                <ul>
+                    <li th:each="role : ${user.roles}" th:text="${role.name}"></li>
+                </ul>
+            </td>
             <td><a th:href="@{/editUser/{id}(id=${user.id})}">Edit</a>
                 <a th:href="@{/deleteUser/{id}(id=${user.id})}">Delete</a>
+                <a th:href="@{/makeAdmin/{id}(id=${user.id})}">Make Admin</a>
             </td>
         </tr>
         </tbody>

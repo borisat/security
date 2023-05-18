@@ -11,6 +11,8 @@ public interface UserService {
 
     void saveUser(User user) throws ControllerException;
 
+    void makeAdmin(User user) throws ControllerException;
+
     void deleteUser(int id);
 
     User getUserByID(int id);

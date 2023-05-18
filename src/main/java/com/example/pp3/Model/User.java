@@ -78,6 +78,11 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
+    public Set<Role> addRole(Role role) {
+        this.getRoles().add(role);
+        return this.getRoles();
+    }
+
     public User(String name, byte age) {
         this.name = name;
         this.age = age;

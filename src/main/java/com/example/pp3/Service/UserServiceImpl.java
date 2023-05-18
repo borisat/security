@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 @Service
@@ -39,6 +40,18 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    public void makeAdmin(User user) throws ControllerException {
+        if (this.emailPatternMatches(user.getEmail())) {
+            List<Role> roles1 = roleDAO.findByName("ROLE_ADMIN");
+            Set<Role> roleSet = user.getRoles();
+            roleSet.add(roles1.get(0));
+            user.setRoles(roleSet);
+            userDAO.save(user);
+        } else {
+            throw new ControllerException(user.getEmail());
+        }
+    }
+
     @Override
     public void deleteUser(int id) {
         userDAO.deleteById(id);
@@ -61,4 +74,6 @@ public class UserServiceImpl implements UserService {
                 .matcher(emailAddress)
                 .matches();
     }
+
+
 }

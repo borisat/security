@@ -37,6 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/users",
                         "/newUser",
                         "/deleteUser/{id}",
+                        "/makeAdmin/{id}",
                         "/editUser/{id}").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/user").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')") // разрешаем входить на /user пользователям с ролью User
                 .antMatchers("/", "register").permitAll() // доступность всем

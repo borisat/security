@@ -72,6 +72,17 @@ public class UserController {
         return "redirect:/users";
     }
 
+    @GetMapping("/makeAdmin/{id}")
+    public String makeAdmin(@PathVariable(value = "id") int id, Model model) throws ControllerException {
+
+        User user = userService.getUserByID(id);
+        userService.makeAdmin(user);
+
+        model.addAttribute("users", userService.getUsers());
+        return "users/users";
+    }
+
+
     @GetMapping("/editUser/{id}")
     public String editUser(@PathVariable(value = "id") int id, Model model) {
 
