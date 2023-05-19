@@ -1,6 +1,6 @@
-package com.example.pp3.DAO;
+package com.example.pp3.dao;
 
-import com.example.pp3.Model.Role;
+import com.example.pp3.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

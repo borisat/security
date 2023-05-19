@@ -1,6 +1,6 @@
-package com.example.pp3.DAO;
+package com.example.pp3.dao;
 
-import com.example.pp3.Model.User;
+import com.example.pp3.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.*;

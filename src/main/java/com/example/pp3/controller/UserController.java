@@ -1,17 +1,16 @@
-package com.example.pp3.Controller;
+package com.example.pp3.controller;
 
-import com.example.pp3.DAO.RoleDAO;
-import com.example.pp3.DTO.UserDTO;
-import com.example.pp3.Exception.ControllerException;
-import com.example.pp3.Model.Role;
-import com.example.pp3.Model.User;
-import com.example.pp3.Service.UserMapper;
-import com.example.pp3.Service.UserService;
+import com.example.pp3.dao.RoleDAO;
+import com.example.pp3.dto.UserDTO;
+import com.example.pp3.exception.ControllerException;
+import com.example.pp3.model.Role;
+import com.example.pp3.model.User;
+import com.example.pp3.service.UserMapper;
+import com.example.pp3.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.thymeleaf.engine.AttributeNames;
 
 import java.security.Principal;
 

@@ -1,8 +1,8 @@
-package com.example.pp3.Service;
+package com.example.pp3.service;
 
-import com.example.pp3.DTO.UserDTO;
-import com.example.pp3.Exception.ControllerException;
-import com.example.pp3.Model.User;
+import com.example.pp3.dto.UserDTO;
+import com.example.pp3.exception.ControllerException;
+import com.example.pp3.model.User;
 
 import java.util.List;
 

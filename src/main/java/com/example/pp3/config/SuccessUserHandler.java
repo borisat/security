@@ -1,4 +1,4 @@
-package com.example.pp3.Config;
+package com.example.pp3.config;
 
 
 import org.springframework.security.core.Authentication;

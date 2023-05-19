@@ -9,22 +9,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9111d2af-f5e2-4172-ad24-2b2614b780da" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/.idea/checkstyleidea-libs/readme.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/DTO/UserDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Service/UserMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/CommandLineAppStartupRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/CommandLineAppStartupRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/DAO/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/Exception/ControllerException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Exception/ControllerException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/Service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/users/edit_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/users/edit_user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/users/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/users/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/users/new_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/users/new_user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/users/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/users/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +117,7 @@
       <workItem from="1684145188198" duration="23908000" />
       <workItem from="1684266758703" duration="58040000" />
       <workItem from="1684480653580" duration="6742000" />
-      <workItem from="1684487787740" duration="19992000" />
+      <workItem from="1684487787740" duration="25251000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1683908429968</created>
@@ -169,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684389996651</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="commit">
+      <created>1684510090848</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1684510090848</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

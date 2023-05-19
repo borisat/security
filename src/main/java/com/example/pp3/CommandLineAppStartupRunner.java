@@ -1,9 +1,9 @@
 package com.example.pp3;
 
-import com.example.pp3.DAO.RoleDAO;
-import com.example.pp3.DAO.UserDAO;
-import com.example.pp3.Model.Role;
-import com.example.pp3.Model.User;
+import com.example.pp3.dao.RoleDAO;
+import com.example.pp3.dao.UserDAO;
+import com.example.pp3.model.Role;
+import com.example.pp3.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

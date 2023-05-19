@@ -1,15 +1,14 @@
-package com.example.pp3.Service;
+package com.example.pp3.service;
 
-import com.example.pp3.DAO.RoleDAO;
-import com.example.pp3.DAO.UserDAO;
-import com.example.pp3.DTO.UserDTO;
-import com.example.pp3.Exception.ControllerException;
-import com.example.pp3.Model.Role;
-import com.example.pp3.Model.User;
+import com.example.pp3.dao.RoleDAO;
+import com.example.pp3.dao.UserDAO;
+import com.example.pp3.dto.UserDTO;
+import com.example.pp3.exception.ControllerException;
+import com.example.pp3.model.Role;
+import com.example.pp3.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;

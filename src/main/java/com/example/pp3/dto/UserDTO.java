@@ -1,4 +1,4 @@
-package com.example.pp3.DTO;
+package com.example.pp3.dto;
 
 import org.springframework.stereotype.Component;
 

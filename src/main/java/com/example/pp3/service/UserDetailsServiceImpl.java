@@ -1,6 +1,6 @@
-package com.example.pp3.Service;
+package com.example.pp3.service;
 
-import com.example.pp3.DAO.UserDAO;
+import com.example.pp3.dao.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
