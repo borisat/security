@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Autowired
-    private UserMapper userMapper;
+    private UserMapperService userMapperService;
 
 
     @Override
@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void saveUser(UserDTO userDTO) throws ControllerException {
 
-        User user = userMapper.mapDTOToUser(userDTO);
+        User user = userMapperService.mapDTOToUser(userDTO);
 
 
         if (this.emailPatternMatches(user.getEmail())) {

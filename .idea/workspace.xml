@@ -8,8 +8,10 @@
     <option name="showLibraryBeans" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9111d2af-f5e2-4172-ad24-2b2614b780da" name="Changes" comment="commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="9111d2af-f5e2-4172-ad24-2b2614b780da" name="Changes" comment="package name fixed">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/service/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/service/UserMapperService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/service/UserServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +119,7 @@
       <workItem from="1684145188198" duration="23908000" />
       <workItem from="1684266758703" duration="58040000" />
       <workItem from="1684480653580" duration="6742000" />
-      <workItem from="1684487787740" duration="25251000" />
+      <workItem from="1684487787740" duration="25581000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1683908429968</created>
@@ -161,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684510090848</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="package name fixed">
+      <created>1684523808516</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1684523808516</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,23 +189,24 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit" />
+    <MESSAGE value="package name fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="package name fixed" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/pp3/Service/UserMapper.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/pp3/service/UserMapperService.java</url>
           <line>43</line>
-          <properties class="com.example.pp3.Service.UserMapper" method="mapDTOToUser">
+          <properties class="com.example.pp3.service.UserMapperService" method="mapDTOToUser">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/pp3/Model/Role.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/pp3/model/Role.java</url>
           <line>10</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>

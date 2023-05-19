@@ -5,7 +5,7 @@ import com.example.pp3.dto.UserDTO;
 import com.example.pp3.exception.ControllerException;
 import com.example.pp3.model.Role;
 import com.example.pp3.model.User;
-import com.example.pp3.service.UserMapper;
+import com.example.pp3.service.UserMapperService;
 import com.example.pp3.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +27,7 @@ public class UserController {
     private RoleDAO roleDAO;
 
     @Autowired
-    private UserMapper userMapper;
+    private UserMapperService userMapperService;
 
     @GetMapping("/")
     public String hello() {
@@ -98,7 +98,7 @@ public class UserController {
     @GetMapping("/editUser/{id}")
     public String editUser(@PathVariable(value = "id") int id, Model model) {
 
-        UserDTO user = userMapper.mapUserToDTO(userService.getUserByID(id));
+        UserDTO user = userMapperService.mapUserToDTO(userService.getUserByID(id));
 
 
         model.addAttribute("user", user);

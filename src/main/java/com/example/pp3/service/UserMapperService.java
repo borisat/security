@@ -13,7 +13,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class UserMapper {
+public class UserMapperService {
 
     @Autowired
     private UserDAO userDAO;
