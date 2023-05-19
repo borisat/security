@@ -6,6 +6,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(value = HttpStatus.BAD_REQUEST)
 public class ControllerException extends Exception {
     public ControllerException(String message) {
-        super("Incorrect email adress " + message);
+        super("Incorrect input data: " + message);
     }
 }

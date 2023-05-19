@@ -23,7 +23,6 @@
 
     <form action="#" th:action="@{/saveUser}" th:object="${user}" method="POST">
 
-        <h6></h6>
         <th>Name</th>
         <input type="text" required th:field="*{name}" placeholder="User Name">
         <h6></h6>
@@ -33,6 +32,18 @@
         <th>Email</th>
         <input type="text" required th:field="*{email}" placeholder="User Email">
         <h6></h6>
+        <th>Password</th>
+        <input type="text" required th:field="*{password}" placeholder="User password">
+        <h6></h6>
+
+        <th:block th:each="role:${roles}">
+            <input type="checkbox"
+                   name="roles"
+                   th:value="${role}"
+                   th:text="${role}"
+                   th:checked="${user.roles.contains(role)}"
+                   class="m-2"/>
+        </th:block>
         <button type="submit"> Save User</button>
     </form>
     <hr>

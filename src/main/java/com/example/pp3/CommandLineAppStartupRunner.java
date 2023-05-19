@@ -20,7 +20,23 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        createRoles();
         createAdmin();
+    }
+
+
+    public void createRoles() {
+        if (roleDAO.findAll().size() > 0) {
+            System.out.println("Roles exist");
+        } else {
+            Role adminRole = new Role("ROLE_ADMIN");
+            Role userRole = new Role("ROLE_USER");
+
+            roleDAO.save(adminRole);
+            roleDAO.save(userRole);
+
+            System.out.println("Roles created");
+        }
     }
 
     public void createAdmin() {

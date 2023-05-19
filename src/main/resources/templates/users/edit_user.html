@@ -37,6 +37,16 @@
         <th>Password</th>
         <input type="text" required th:field="*{password}" placeholder="User password">
         <h6></h6>
+
+        <th:block th:each="role:${roles}">
+            <input type="checkbox"
+                   name="roles"
+                   th:value="${role}"
+                   th:text="${role}"
+                   th:checked="${user.roles.contains(role)}"
+                   class="m-2"/>
+        </th:block>
+
         <button type="submit"> Update User</button>
     </form>
 

@@ -1,5 +1,6 @@
 package com.example.pp3.Service;
 
+import com.example.pp3.DTO.UserDTO;
 import com.example.pp3.Exception.ControllerException;
 import com.example.pp3.Model.User;
 
@@ -9,7 +10,7 @@ public interface UserService {
 
     List<User> getUsers();
 
-    void saveUser(User user) throws ControllerException;
+    void saveUser(UserDTO user) throws ControllerException;
 
     void makeAdmin(User user) throws ControllerException;
 

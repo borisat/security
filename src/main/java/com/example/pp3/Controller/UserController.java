@@ -1,15 +1,21 @@
 package com.example.pp3.Controller;
 
+import com.example.pp3.DAO.RoleDAO;
+import com.example.pp3.DTO.UserDTO;
 import com.example.pp3.Exception.ControllerException;
 import com.example.pp3.Model.Role;
 import com.example.pp3.Model.User;
+import com.example.pp3.Service.UserMapper;
 import com.example.pp3.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.thymeleaf.engine.AttributeNames;
 
 import java.security.Principal;
+
+import java.util.HashSet;
 import java.util.stream.Collectors;
 
 @Controller
@@ -18,11 +24,15 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private RoleDAO roleDAO;
+
+    @Autowired
+    private UserMapper userMapper;
 
     @GetMapping("/")
-    @ResponseBody
     public String hello() {
-        return "<h1>Hello</h1>";
+        return "users/index";
     }
 
     @GetMapping("/user")
@@ -49,8 +59,12 @@ public class UserController {
 
     @GetMapping("/newUser")
     public String newUser(Model model) {
-        User user = new User();
+        User user = new User(new HashSet<>(roleDAO.findAll()));
         model.addAttribute("user", user);
+        model.addAttribute("roles", roleDAO.findAll()
+                .stream()
+                .map(Role::getName)
+                .collect(Collectors.toList()));
         return "users/new_user";
     }
 
@@ -62,13 +76,12 @@ public class UserController {
     }
 
     @PostMapping("/saveUser")
-    public String saveUser(@ModelAttribute("user") User user) throws ControllerException {
+    public String saveUser(@ModelAttribute("user") UserDTO user) throws ControllerException {
         try {
             userService.saveUser(user);
         } catch (ControllerException e) {
             throw e;
         }
-
         return "redirect:/users";
     }
 
@@ -86,9 +99,15 @@ public class UserController {
     @GetMapping("/editUser/{id}")
     public String editUser(@PathVariable(value = "id") int id, Model model) {
 
-        User user = userService.getUserByID(id);
+        UserDTO user = userMapper.mapUserToDTO(userService.getUserByID(id));
+
 
         model.addAttribute("user", user);
+        model.addAttribute("roles", roleDAO.findAll()
+                .stream()
+                .map(Role::getName)
+                .collect(Collectors.toList()));
+        ;
         return "users/edit_user";
     }
 

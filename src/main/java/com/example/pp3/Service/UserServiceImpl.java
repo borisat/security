@@ -2,6 +2,7 @@ package com.example.pp3.Service;
 
 import com.example.pp3.DAO.RoleDAO;
 import com.example.pp3.DAO.UserDAO;
+import com.example.pp3.DTO.UserDTO;
 import com.example.pp3.Exception.ControllerException;
 import com.example.pp3.Model.Role;
 import com.example.pp3.Model.User;
@@ -20,8 +21,13 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDAO userDAO;
 
+
     @Autowired
     private RoleDAO roleDAO;
+
+
+    @Autowired
+    private UserMapper userMapper;
 
 
     @Override
@@ -30,10 +36,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void saveUser(User user) throws ControllerException {
+    public void saveUser(UserDTO userDTO) throws ControllerException {
+
+        User user = userMapper.mapDTOToUser(userDTO);
+
+
         if (this.emailPatternMatches(user.getEmail())) {
-            List<Role> roles1 = roleDAO.findByName("ROLE_USER");
-            user.setRoles(new HashSet<>(roles1));
+//            List<Role> roles1 = roleDAO.findByName("ROLE_USER");
+//            user.setRoles(new HashSet<>(roles1));
             userDAO.save(user);
         } else {
             throw new ControllerException(user.getEmail());
