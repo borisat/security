@@ -55,7 +55,7 @@
         <script>
             $(document).ready(function () {
                 // Выполнение GET-запроса
-                $.get('/api/user/userProfile', function (data) {
+                $.get('/api/users/', function (data) {
                     // Обновление значения элемента страницы с id="email"
                     $('#email').text(data.email);
                 });
@@ -65,9 +65,9 @@
         <script>
             $(document).ready(function () {
                 // Выполнение GET-запроса
-                $.get('/api/user/roles', function (data) {
+                $.get('/api/users/', function (data) {
                     // Обновление значения элемента страницы с id="email"
-                    $('#roles').text(data);
+                    $('#roles').text(data.roles);
                 });
             });</script>
 
@@ -139,7 +139,7 @@
 
                         <div class="form-row text-center">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-success">Save Use</button>
+                                <button type="submit" class="btn btn-success">Save User</button>
                             </div>
                         </div>
                     </form>
@@ -271,13 +271,21 @@
         window.location.href = '/logout';
     });
 
+    $('#admin-button').click(function () {
+        window.location.href = '/users';
+    });
+
+    $('#user-button').click(function () {
+        window.location.href = '/user';
+    });
+
 
     $('#userEditDialog').on('shown.bs.modal', function (event) {
         let button = $(event.relatedTarget) // Button that triggered the modal
         let userId = button.data('userid') // Extract info from data-* attributes
         if (userId) {
             $.get({
-                url: '/api/user/' + userId,
+                url: '/api/users/' + userId,
                 success: (data) => {
                     let modal = $(this)
                     modal.find('#user-id').val(data.id)
@@ -321,7 +329,7 @@
         }
 
         $.ajax({
-            url: '/api/user',
+            url: '/api/users',
             type: 'POST',
             data: JSON.stringify(user),
             contentType: "application/json; charset=utf-8",
@@ -342,7 +350,7 @@
         let userId = button.data('userid') // Extract info from data-* attributes
         if (userId) {
             $.get({
-                url: '/api/user/' + userId,
+                url: '/api/users/' + userId,
                 success: (data) => {
                     let modal = $(this)
                     modal.find('#user_id').val(data.id)
@@ -366,41 +374,6 @@
         }
     })
 
-    $('#delete-user-button').click(function () {
-        let modal = $('#userDeleteDialog');
-        let roles = [];
-        modal.find('input[type=checkbox]').each(function () { // проходим по всем чекбоксам
-            if ($(this).is(':checked')) { // если чекбокс отмечен
-                roles.push($(this).val()); // добавляем значение в массив ролей
-            }
-        });
-        let user = {
-            name: modal.find('#user_name').val(),
-            age: modal.find('#user_age').val(),
-            email: modal.find('#user_email').val(),
-            password: modal.find('#user_password').val(),
-            roles: roles // добавляем массив ролей в объект пользователя
-        };
-        if (modal.find('#user_id').val()) {
-            user.id = modal.find('#user_id').val()
-        }
-
-        $.ajax({
-            url: '/api/user/delete',
-            type: 'POST',
-            data: JSON.stringify(user.id),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: () => {
-                location.reload()
-            },
-            //  error: (err) => {
-            //      alert(err);
-            // }
-        })
-
-        modal.modal('hide');
-    })
 
 
 </script>

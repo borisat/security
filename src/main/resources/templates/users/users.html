@@ -36,7 +36,7 @@
         <script>
             $(document).ready(function () {
                 // Выполнение GET-запроса
-                $.get('/api/user/userProfile', function (data) {
+                $.get('/api/users/', function (data) {
                     // Обновление значения элемента страницы с id="email"
                     $('#email').text(data.email);
                 });
@@ -46,9 +46,9 @@
         <script>
             $(document).ready(function () {
                 // Выполнение GET-запроса
-                $.get('/api/user/roles', function (data) {
+                $.get('/api/users', function (data) {
                     // Обновление значения элемента страницы с id="email"
-                    $('#roles').text(data);
+                    $('#roles').text(data.roles);
                 });
             });
         </script>
@@ -107,8 +107,6 @@
                             <td>[[${user.name}]]</td>
                             <td>[[${user.age}]]</td>
                             <td>[[${user.email}]]</td>
-
-
                             <td>
                                 <ul>
                                     <li th:each="role : ${user.roles}" style="list-style-type: none;"
@@ -116,19 +114,10 @@
                                 </ul>
                             </td>
                             <td>
-                                <!--                                <a class="btn btn-info" th:href="@{/editUser/{id}(id=${user.id})}"-->
-                                <!--                                   role="button">Edit</a>-->
-                                <!-- HTML-код кнопки (триггер модального окна)-->
                                 <a class="btn btn-info" data-toggle="modal" data-target="#userEditDialog"
                                    th:data-userId="${user.id}">Edit</a>
                                 <a class="btn btn-danger" data-toggle="modal" data-target="#userDeleteDialog"
                                    th:data-userId="${user.id}">Delete</a>
-
-                                <!--                                <a class="btn btn-danger" th:href="@{/deleteUser/{id}(id=${user.id})}"-->
-                                <!--                                   role="button">Delete</a>-->
-                                <!--                                <a class="btn btn-info" th:href="@{/makeAdmin/{id}(id=${user.id})}"-->
-                                <!--                                   role="button">Make-->
-                                <!--                                    Admin</a>-->
                             </td>
                         </tr>
                         </tbody>
@@ -142,7 +131,6 @@
 
 
 </div>
-
 <div class="modal fade" id="userEditDialog" tabindex="-1" role="dialog" aria-labelledby="userEditDialogLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -275,7 +263,7 @@
         let userId = button.data('userid') // Extract info from data-* attributes
         if (userId) {
             $.get({
-                url: '/api/user/' + userId,
+                url: '/api/users/' + userId,
                 success: (data) => {
                     let modal = $(this)
                     modal.find('#user-id').val(data.id)
@@ -319,7 +307,7 @@
         }
 
         $.ajax({
-            url: '/api/user',
+            url: '/api/users',
             type: 'POST',
             data: JSON.stringify(user),
             contentType: "application/json; charset=utf-8",
@@ -340,7 +328,7 @@
         let userId = button.data('userid') // Extract info from data-* attributes
         if (userId) {
             $.get({
-                url: '/api/user/' + userId,
+                url: '/api/users/' + userId,
                 success: (data) => {
                     let modal = $(this)
                     modal.find('#user_id').val(data.id)
@@ -384,8 +372,8 @@
         }
 
         $.ajax({
-            url: '/api/user/delete',
-            type: 'POST',
+            url: '/api/users/',
+            type: 'DELETE',
             data: JSON.stringify(user.id),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -399,7 +387,6 @@
 
         modal.modal('hide');
     })
-
 
 </script>
 </body>

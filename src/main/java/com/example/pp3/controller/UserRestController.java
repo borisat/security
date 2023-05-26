@@ -12,11 +12,10 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.security.Principal;
-import java.sql.SQLOutput;
 
 @Validated
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/users")
 public class UserRestController {
 
     @Autowired
@@ -33,8 +32,8 @@ public class UserRestController {
         return userMapperService.mapUserToDTO(userService.getUserByID(userId));
     }
 
-    @GetMapping("/userProfile")
-    public UserDTO myProfile(@AuthenticationPrincipal User user) {
+    @GetMapping
+    public UserDTO userProfile(@AuthenticationPrincipal User user) {
         return userMapperService.mapUserToDTO(user);
     }
 
@@ -43,20 +42,9 @@ public class UserRestController {
         userService.saveUser(userMapperService.mapDTOToUser(userDTO));
     }
 
-    @PostMapping("/delete")
+    @DeleteMapping
     public void deleteById(@RequestBody int userId) {
         userService.deleteUser(userId);
     }
 
-    @RequestMapping(value = "/email", method = RequestMethod.GET)
-    @ResponseBody
-    public String currentUserEmail(Principal principal) {
-        return userService.getUserByName(principal.getName()).getEmail();
-    }
-
-    @RequestMapping(value = "/roles", method = RequestMethod.GET)
-    @ResponseBody
-    public String currentUserRoles(Principal principal) {
-        return String.join(" ", userMapperService.mapUserToDTO(userService.getUserByName(principal.getName())).getRoles());
-    }
 }

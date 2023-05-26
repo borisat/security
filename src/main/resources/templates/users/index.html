@@ -12,13 +12,17 @@
     <title>Hello, world!</title>
 </head>
 <body>
+<div class="container-fluid bg-dark min-vh-100">
 
-<div class="row">
-    <div class="col bg-dark border-light">Первый</div>
-    <div class="col bg-danger border-dark">Второй</div>
-    <div class="col bg-danger border-dark">Второй</div>
+
+    <div class="row h-100">
+        <div class="col-12 my-auto">
+            <h1>Превед!</h1>
+            <h3><a th:href="@{/login}">Залогиниться</a></h3>
+            <h3><a th:href="@{/register}">Зарегаться</a></h3>
+        </div>
+    </div>
 </div>
-
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

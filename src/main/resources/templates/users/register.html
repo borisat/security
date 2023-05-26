@@ -5,47 +5,208 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <title>My CRUD APP</title>
+    <style>
+        input {
+            width: 20%;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        .wrapper {
+            min-height: 100%;
+        }
+
+        div[class^="role-"] {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .nav.flex-column {
+            margin-top: 20px;
+        }
+
+        .nav-item {
+            margin-bottom: 10px;
+        }
+
+    </style>
 </head>
-
 <body>
-<div class="container">
-    <h2>Edit user data</h2>
-    <hr>
+
+<div class="container-fluid ">
 
 
-    <form action="#" th:action="@{/saveUser}" th:object="${user}" method="POST">
+    <div class="row bg-dark text-white">
+        <div class="col">
+            <h5><span id="email"></span> <span id="roles"></span>
+            </h5>
+        </div>
+        <script>
+            $(document).ready(function () {
+                // Выполнение GET-запроса
+                $.get('/api/users/', function (data) {
+                    // Обновление значения элемента страницы с id="email"
+                    $('#email').text(data.email);
+                });
+            });
+        </script>
 
-        <th>Name</th>
-        <input type="text" required th:field="*{name}" placeholder="User Name">
-        <h6></h6>
-        <th>Age</th>
-        <input type="number" required th:field="*{age}" placeholder="User Age" min="18" max="99">
-        <h6></h6>
-        <th>Email</th>
-        <input type="text" required th:field="*{email}" placeholder="User Email">
-        <h6></h6>
-        <th>Password</th>
-        <input type="text" required th:field="*{password}" placeholder="User password">
-        <h6></h6>
+        <script>
+            $(document).ready(function () {
+                // Выполнение GET-запроса
+                $.get('/api/users/', function (data) {
+                    // Обновление значения элемента страницы с id="email"
+                    $('#roles').text(data.roles);
+                });
+            });</script>
 
-        <th:block th:each="role:${roles}">
-            <input type="checkbox"
-                   name="roles"
-                   th:value="${role}"
-                   th:text="${role}"
-                   th:checked="${user.roles.contains(role)}"
-                   class="m-2"/>
-        </th:block>
-        <button type="submit"> Save User</button>
-    </form>
-    <hr>
+        <div class="col text-right">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-1">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                </li>
+                <li class="nav-item">
+                </li>
+            </ul>
+
+        </div>
+        <div class="col bg-light">
+            <h1></h1>
+            <div class="col">
+
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+
+                    </li>
+                    <li class="nav-item">
+
+                </ul>
+
+                <div class="col">
+                    <h5></h5>
+                </div>
+
+
+                <div class="col mx-auto text-center bg-white">
+                    <form action="#" th:action="@{/saveUser}" th:object="${user}" method="POST">
+
+                        <h6>Name</h6>
+                        <input type="text" required th:field="*{name}" placeholder="User Name">
+                        <h6></h6>
+                        <h6>Age</h6>
+                        <input type="number" required th:field="*{age}" placeholder="User Age" min="18" max="99">
+                        <h6></h6>
+                        <h6>Email</h6>
+                        <input type="text" required th:field="*{email}" placeholder="User Email">
+                        <h6></h6>
+                        <h6>Password</h6>
+                        <input type="text" required th:field="*{password}" placeholder="User password">
+                        <h6></h6>
+
+                        <div class="col d-flex justify-content-center mx-auto text-center bg-white my-4 p-4">
+                            <th:block th:each="role:${roles}">
+                                <div th:class="'role-' + ${role}">
+                                    <input type="checkbox"
+                                           name="roles"
+                                           th:value="${role}"
+                                           th:text="${role}"
+                                           th:checked="${user.roles.contains(role)}"
+                                           class="m-2"/>
+                                </div>
+                            </th:block>
+                        </div>
+
+
+                        <div class="form-row text-center">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-success">Save User</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
 
 </div>
-</body>
 
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $("#myModal").modal('show');
+    });
+
+
+</script>
+<script>
+
+
+    $('#save-user-button').click(function () {
+        let modal = $('#userEditDialog');
+        let roles = [];
+        modal.find('input[type=checkbox]').each(function () { // проходим по всем чекбоксам
+            if ($(this).is(':checked')) { // если чекбокс отмечен
+                roles.push($(this).val()); // добавляем значение в массив ролей
+            }
+        });
+        let user = {
+            name: modal.find('#user-name').val(),
+            age: modal.find('#user-age').val(),
+            email: modal.find('#user-email').val(),
+            password: modal.find('#user-password').val(),
+            roles: roles // добавляем массив ролей в объект пользователя
+        };
+        if (modal.find('#user-id').val()) {
+            user.id = modal.find('#user-id').val()
+        }
+
+        $.ajax({
+            url: '/api/users',
+            type: 'POST',
+            data: JSON.stringify(user),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: () => {
+                location.reload()
+            },
+            //  error: (err) => {
+            //      alert(err);
+            // }
+        })
+
+        modal.modal('hide');
+    });
+
+
+</script>
+</body>
 </html>
