@@ -33,11 +33,27 @@ public class UserController {
         return "users/index";
     }
 
+    @GetMapping("/user")
+    public String user(Model model, Principal principal) {
+        model.addAttribute("users", userService.getUsers());
+        User user = userService.getUserByName(principal.getName());
+        model.addAttribute("username", user.getUsername());
+        model.addAttribute("email", user.getEmail());
+        model.addAttribute("age", user.getAge());
+        model.addAttribute("pass", user.getPassword());
+        model.addAttribute("roles", user.getRoles().stream()
+                .map(Role::getName)
+                .collect(Collectors.joining(", ")));
+
+        return "users/user";
+    }
+
     @GetMapping("/users")
     public String getAll(Model model) {
         model.addAttribute("users", userService.getUsers());
         return "users/users";
     }
+
 
     @GetMapping("/register")
     public String register(Model model) {

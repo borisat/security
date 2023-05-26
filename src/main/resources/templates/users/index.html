@@ -24,6 +24,200 @@
     </div>
 </div>
 
+<div class="modal fade" id="userEditDialog" tabindex="-1" role="dialog" aria-labelledby="userEditDialogLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="userEditDialogLabel">Edit user</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="user-id">
+                    <div class="form-group">
+                        <label for="user-name" class="col-form-label">User name</label>
+                        <input type="text" class="form-control" id="user-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="user-age" class="col-form-label">Age</label>
+                        <input type="number" class="form-control" id="user-age">
+                    </div>
+                    <div class="form-group">
+                        <label for="user-email" class="col-form-label">Email</label>
+                        <input type="text" class="form-control" id="user-email">
+                    </div>
+                    <div class="form-group">
+                        <label for="user-password" class="col-form-label">Password</label>
+                        <input type="text" class="form-control" id="user-password">
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="ROLE_ADMIN">ROLE_ADMIN</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="ROLE_USER">ROLE_USER</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="save-user-button" type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#logout-button').click(function () {
+        window.location.href = '/logout';
+    });
+
+    $('#admin-button').click(function () {
+        window.location.href = '/users';
+    });
+
+    $('#user-button').click(function () {
+        window.location.href = '/user';
+    });
+
+
+    $('#userEditDialog').on('shown.bs.modal', function (event) {
+        let button = $(event.relatedTarget) // Button that triggered the modal
+        let userId = button.data('userid') // Extract info from data-* attributes
+        if (userId) {
+            $.get({
+                url: '/api/users/' + userId,
+                success: (data) => {
+                    let modal = $(this)
+                    modal.find('#user-id').val(data.id)
+                    modal.find('#user-name').val(data.name)
+                    modal.find('#user-age').val(data.age)
+                    modal.find('#user-email').val(data.email)
+                    modal.find('#user-password').val(data.password)
+
+                    var roles = data.roles;
+                    if (roles) {
+                        modal.find('input[type=checkbox]').prop('checked', false);
+                        $.each(roles, function (index, value) {
+                            modal.find('input[value="' + value + '"]').prop('checked', true);
+                        });
+                    }
+                },
+                error: (err) => {
+                    alert(err);
+                }
+            });
+        }
+    })
+
+    $('#save-user-button').click(function () {
+        let modal = $('#userEditDialog');
+        let roles = [];
+        modal.find('input[type=checkbox]').each(function () { // проходим по всем чекбоксам
+            if ($(this).is(':checked')) { // если чекбокс отмечен
+                roles.push($(this).val()); // добавляем значение в массив ролей
+            }
+        });
+        let user = {
+            name: modal.find('#user-name').val(),
+            age: modal.find('#user-age').val(),
+            email: modal.find('#user-email').val(),
+            password: modal.find('#user-password').val(),
+            roles: roles // добавляем массив ролей в объект пользователя
+        };
+        if (modal.find('#user-id').val()) {
+            user.id = modal.find('#user-id').val()
+        }
+
+        $.ajax({
+            url: '/api/users',
+            type: 'POST',
+            data: JSON.stringify(user),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: () => {
+                location.reload()
+            },
+            //  error: (err) => {
+            //      alert(err);
+            // }
+        })
+
+        modal.modal('hide');
+    });
+
+    $('#userDeleteDialog').on('shown.bs.modal', function (event) {
+        let button = $(event.relatedTarget) // Button that triggered the modal
+        let userId = button.data('userid') // Extract info from data-* attributes
+        if (userId) {
+            $.get({
+                url: '/api/users/' + userId,
+                success: (data) => {
+                    let modal = $(this)
+                    modal.find('#user_id').val(data.id)
+                    modal.find('#user_name').val(data.name)
+                    modal.find('#user_age').val(data.age)
+                    modal.find('#user_email').val(data.email)
+                    modal.find('#user_password').val(data.password)
+
+                    var roles = data.roles;
+                    if (roles) {
+                        modal.find('input[type=checkbox]').prop('checked', false);
+                        $.each(roles, function (index, value) {
+                            modal.find('input[value="' + value + '"]').prop('checked', true);
+                        });
+                    }
+                },
+                error: (err) => {
+                    alert(err);
+                }
+            });
+        }
+    })
+
+    $('#delete-user-button').click(function () {
+        let modal = $('#userDeleteDialog');
+        let roles = [];
+        modal.find('input[type=checkbox]').each(function () { // проходим по всем чекбоксам
+            if ($(this).is(':checked')) { // если чекбокс отмечен
+                roles.push($(this).val()); // добавляем значение в массив ролей
+            }
+        });
+        let user = {
+            name: modal.find('#user_name').val(),
+            age: modal.find('#user_age').val(),
+            email: modal.find('#user_email').val(),
+            password: modal.find('#user_password').val(),
+            roles: roles // добавляем массив ролей в объект пользователя
+        };
+        if (modal.find('#user_id').val()) {
+            user.id = modal.find('#user_id').val()
+        }
+
+        $.ajax({
+            url: '/api/users/',
+            type: 'DELETE',
+            data: JSON.stringify(user.id),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: () => {
+                location.reload()
+            },
+            //  error: (err) => {
+            //      alert(err);
+            // }
+        })
+
+        modal.modal('hide');
+    })
+
+</script>
+
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -35,5 +229,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+
+
 </body>
 </html>
