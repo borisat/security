@@ -8,7 +8,7 @@
     <option name="showLibraryBeans" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9111d2af-f5e2-4172-ad24-2b2614b780da" name="Changes" comment="package name fixed">
+    <list default="true" id="9111d2af-f5e2-4172-ad24-2b2614b780da" name="Changes" comment="Фронт">
       <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/controller/UserRestController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/templates/parts/template.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -151,7 +151,7 @@
       <workItem from="1684936311561" duration="1144000" />
       <workItem from="1684937612235" duration="34844000" />
       <workItem from="1685091431612" duration="4066000" />
-      <workItem from="1685095637695" duration="2859000" />
+      <workItem from="1685095637695" duration="3334000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1683908429968</created>
@@ -209,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684524008395</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Фронт">
+      <created>1685098980306</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1685098980307</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,7 +236,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit" />
     <MESSAGE value="package name fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="package name fixed" />
+    <MESSAGE value="Фронт" />
+    <option name="LAST_COMMIT_MESSAGE" value="Фронт" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
