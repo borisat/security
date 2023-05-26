@@ -44,7 +44,7 @@ public class UserRestController {
     }
 
     @PostMapping("/delete")
-    public void deleteById(@RequestBody int userId) throws ControllerException {
+    public void deleteById(@RequestBody int userId) {
         userService.deleteUser(userId);
     }
 
