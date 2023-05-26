@@ -6,6 +6,7 @@ import com.example.pp3.model.Role;
 import com.example.pp3.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
@@ -44,6 +45,7 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
             System.out.println("admin exists");
         } else {
             User admin = new User("admin", "admin");
+            admin.setPassword(new BCryptPasswordEncoder().encode(admin.getPassword()));
             List<Role> roles = roleDAO.findAll();
             admin.setRoles(new HashSet<>(roles));
             userDAO.save(admin);

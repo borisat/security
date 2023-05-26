@@ -13,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-
 import java.util.HashSet;
 import java.util.stream.Collectors;
 
@@ -75,31 +74,18 @@ public class UserController {
     }
 
     @PostMapping("/saveUser")
-    public String saveUser(@ModelAttribute("user") UserDTO user) throws ControllerException {
+    public String saveUser(@ModelAttribute("user") UserDTO userDTO) throws ControllerException {
         try {
-            userService.saveUser(user);
+            userService.saveUser(userMapperService.mapDTOToUser(userDTO));
         } catch (ControllerException e) {
             throw e;
         }
         return "redirect:/users";
     }
 
-    @GetMapping("/makeAdmin/{id}")
-    public String makeAdmin(@PathVariable(value = "id") int id, Model model) throws ControllerException {
-
-        User user = userService.getUserByID(id);
-        userService.makeAdmin(user);
-
-        model.addAttribute("users", userService.getUsers());
-        return "users/users";
-    }
-
-
     @GetMapping("/editUser/{id}")
     public String editUser(@PathVariable(value = "id") int id, Model model) {
-
         UserDTO user = userMapperService.mapUserToDTO(userService.getUserByID(id));
-
 
         model.addAttribute("user", user);
         model.addAttribute("roles", roleDAO.findAll()
@@ -112,7 +98,6 @@ public class UserController {
 
     @GetMapping("/deleteUser/{id}")
     public String deleteUser(@PathVariable(value = "id") int id) {
-
         userService.deleteUser(id);
         return "redirect:/users";
     }

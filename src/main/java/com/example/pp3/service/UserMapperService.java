@@ -8,7 +8,6 @@ import com.example.pp3.model.Role;
 import com.example.pp3.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -49,7 +48,7 @@ public class UserMapperService {
             user = userDAO.findById(userDTO.getId()).get();
         }
 
-        if (userDTO.getRoles() == null) {
+        if (userDTO.getRoles() == null || userDTO.getRoles().size() == 0) {
             userDTO.setRoles(new ArrayList<>(Collections.singleton("ROLE_USER")));
         }
 

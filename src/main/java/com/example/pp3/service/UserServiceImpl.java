@@ -1,33 +1,25 @@
 package com.example.pp3.service;
 
-import com.example.pp3.dao.RoleDAO;
 import com.example.pp3.dao.UserDAO;
-import com.example.pp3.dto.UserDTO;
 import com.example.pp3.exception.ControllerException;
-import com.example.pp3.model.Role;
 import com.example.pp3.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
-import java.util.regex.Pattern;
+
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
 
 
     @Autowired
     private UserDAO userDAO;
-
-
-    @Autowired
-    private RoleDAO roleDAO;
-
-
-    @Autowired
-    private UserMapperService userMapperService;
-
 
     @Override
     public List<User> getUsers() {
@@ -35,29 +27,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void saveUser(UserDTO userDTO) throws ControllerException {
-
-        User user = userMapperService.mapDTOToUser(userDTO);
-
-
-        if (this.emailPatternMatches(user.getEmail())) {
-//            List<Role> roles1 = roleDAO.findByName("ROLE_USER");
-//            user.setRoles(new HashSet<>(roles1));
-            userDAO.save(user);
-        } else {
-            throw new ControllerException(user.getEmail());
-        }
+    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        return userDAO.getUserByUsername(s);
     }
 
-    public void makeAdmin(User user) throws ControllerException {
-        if (this.emailPatternMatches(user.getEmail())) {
-            List<Role> roles1 = roleDAO.findByName("ROLE_ADMIN");
-            Set<Role> roleSet = user.getRoles();
-            roleSet.add(roles1.get(0));
-            user.setRoles(roleSet);
+    @Override
+    public void saveUser(User user) throws ControllerException {
+        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+        try {
             userDAO.save(user);
-        } else {
-            throw new ControllerException(user.getEmail());
+        } catch (DataIntegrityViolationException e) {
+            throw new ControllerException("not unique username");
+        } catch (Exception e) {
+            throw new ControllerException("Incorrect email");
         }
     }
 
@@ -76,13 +58,4 @@ public class UserServiceImpl implements UserService {
     public User getUserByName(String name) {
         return userDAO.getUserByUsername(name);
     }
-
-    public boolean emailPatternMatches(String emailAddress) {
-        String regexPattern = "^(.+)@(\\S+)$";
-        return Pattern.compile(regexPattern)
-                .matcher(emailAddress)
-                .matches();
-    }
-
-
 }

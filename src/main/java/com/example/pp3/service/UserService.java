@@ -10,9 +10,7 @@ public interface UserService {
 
     List<User> getUsers();
 
-    void saveUser(UserDTO user) throws ControllerException;
-
-    void makeAdmin(User user) throws ControllerException;
+    void saveUser(User user) throws ControllerException;
 
     void deleteUser(int id);
 
