@@ -1,6 +1,7 @@
 package com.example.pp3.service;
 
 import com.example.pp3.dao.UserDAO;
+import com.example.pp3.dto.UserDTO;
 import com.example.pp3.exception.ControllerException;
 import com.example.pp3.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -21,9 +23,22 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Autowired
     private UserDAO userDAO;
 
+    @Autowired
+    private UserMapperService userMapperService;
+
     @Override
     public List<User> getUsers() {
         return userDAO.findAll();
+    }
+
+    public List<UserDTO> getUsersDTO() {
+
+        List<UserDTO> userDTOList = new ArrayList<>();
+        List<User> userList = this.getUsers();
+
+        userList.forEach(user -> userDTOList.add(userMapperService.mapUserToDTO(user)));
+
+        return userDTOList;
     }
 
     @Override
@@ -37,9 +52,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         try {
             userDAO.save(user);
         } catch (DataIntegrityViolationException e) {
-            throw new ControllerException("not unique username");
+            throw new ControllerException("not unique username", e);
         } catch (Exception e) {
-            throw new ControllerException("Incorrect email");
+            throw new ControllerException("Incorrect email", e);
         }
     }
 

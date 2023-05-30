@@ -28,7 +28,6 @@
 <div class="container-fluid ">
     <script>
         $(document).ready(function () {
-            // Выполнение GET-запроса
             $.get('/api/users/', function (data) {
                 $('#user_id').text(data.id);
                 $('#user_name').text(data.name);

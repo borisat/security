@@ -40,6 +40,17 @@
             margin-bottom: 10px;
         }
 
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
     </style>
 </head>
 <body>
@@ -49,28 +60,8 @@
 
     <div class="row bg-dark text-white">
         <div class="col">
-            <h5><span id="email"></span> <span id="roles"></span>
             </h5>
         </div>
-        <script>
-            $(document).ready(function () {
-                // Выполнение GET-запроса
-                $.get('/api/users/', function (data) {
-                    // Обновление значения элемента страницы с id="email"
-                    $('#email').text(data.email);
-                });
-            });
-        </script>
-
-        <script>
-            $(document).ready(function () {
-                // Выполнение GET-запроса
-                $.get('/api/users/', function (data) {
-                    // Обновление значения элемента страницы с id="email"
-                    $('#roles').text(data.roles);
-                });
-            });</script>
-
         <div class="col text-right">
         </div>
     </div>
@@ -94,7 +85,7 @@
 
                     </li>
                     <li class="nav-item">
-
+                    </li>
                 </ul>
 
                 <div class="col">
@@ -103,40 +94,43 @@
 
 
                 <div class="col mx-auto text-center bg-white">
-                    <form action="#" th:action="@{/saveUser}" th:object="${user}" method="POST">
+                    <form id="user-form">
+                        <div class="form-group"><label for="user_name">Name:</label>
+                            <input type="text" id="user_name" required placeholder="User Name">
+                        </div>
 
-                        <h6>Name</h6>
-                        <input type="text" required th:field="*{name}" placeholder="User Name">
-                        <h6></h6>
-                        <h6>Age</h6>
-                        <input type="number" required th:field="*{age}" placeholder="User Age" min="18" max="99">
-                        <h6></h6>
-                        <h6>Email</h6>
-                        <input type="text" required th:field="*{email}" placeholder="User Email">
-                        <h6></h6>
-                        <h6>Password</h6>
-                        <input type="text" required th:field="*{password}" placeholder="User password">
-                        <h6></h6>
-
-                        <div class="col d-flex justify-content-center mx-auto text-center bg-white my-4 p-4">
-                            <th:block th:each="role:${roles}">
-                                <div th:class="'role-' + ${role}">
-                                    <input type="checkbox"
-                                           name="roles"
-                                           th:value="${role}"
-                                           th:text="${role}"
-                                           th:checked="${user.roles.contains(role)}"
-                                           class="m-2"/>
-                                </div>
-                            </th:block>
+                        <div class="form-group"><label for="user_age">Age:</label>
+                            <input type="number" id="user_age" required placeholder="User age" min="18" max="99">
                         </div>
 
 
-                        <div class="form-row text-center">
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-success">Save User</button>
+                        <div class="form-group"><label for="user_email">Email:</label>
+                            <input type="email" id="user_email" required placeholder="Email">
+                        </div>
+
+
+                        <div class="form-group"><label for="user_password">Password:</label>
+                            <input type="text" id="user_password" required placeholder="Password">
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col d-flex justify-content-center mx-auto text-center bg-white my-4 p-4">
+                                <th:block th:each="role:${roles}">
+                                    <div th:class="'role-' + ${role}">
+                                        <input type="checkbox" id="user_roles"
+                                               name="user_roles[]"
+                                               th:value="${role}"
+                                               th:text="${role}"
+                                               th:checked="${user.roles.contains(role)}"
+                                               class="m-2"/>
+                                    </div>
+                                </th:block>
                             </div>
                         </div>
+
+                        <button type="submit" class="btn btn-success">Save User</button>
+
                     </form>
                 </div>
 
@@ -161,49 +155,35 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 <script>
-    $(document).ready(function () {
-        $("#myModal").modal('show');
-    });
 
-
-</script>
-<script>
-
-
-    $('#save-user-button').click(function () {
-        let modal = $('#userEditDialog');
-        let roles = [];
-        modal.find('input[type=checkbox]').each(function () { // проходим по всем чекбоксам
-            if ($(this).is(':checked')) { // если чекбокс отмечен
-                roles.push($(this).val()); // добавляем значение в массив ролей
-            }
-        });
-        let user = {
-            name: modal.find('#user-name').val(),
-            age: modal.find('#user-age').val(),
-            email: modal.find('#user-email').val(),
-            password: modal.find('#user-password').val(),
-            roles: roles // добавляем массив ролей в объект пользователя
+    $('#user-form').submit(function (event) {
+        var user = {
+            name: $('#user_name').val(),
+            age: $('#user_age').val(),
+            email: $('#user_email').val(),
+            password: $('#user_password').val(),
+            roles: $('input[name="user_roles[]"]:checked').map(function () { // изменен селектор
+                return $(this).val();
+            }).get()
         };
-        if (modal.find('#user-id').val()) {
-            user.id = modal.find('#user-id').val()
-        }
 
         $.ajax({
-            url: '/api/users',
-            type: 'POST',
+            url: "/api/users/account",
+            type: "POST",
             data: JSON.stringify(user),
             contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: () => {
-                location.reload()
+            dataType: "text",
+            async: false,
+            success: function (data) {
+                console.log('User saved:', data);
+                window.location.href = "/users";
             },
-            //  error: (err) => {
-            //      alert(err);
-            // }
-        })
+            error: function error(err) {
+                console.log(err);
+                document.getElementById("error-message").innerHTML = "Произошла ошибка: " + err.message;
+            }
+        });
 
-        modal.modal('hide');
     });
 
 

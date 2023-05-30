@@ -17,21 +17,19 @@ public class UserMapperService {
     @Autowired
     private UserDAO userDAO;
 
-    @Autowired
-    private UserDTO userDTO;
 
     @Autowired
     private RoleDAO roleDAO;
 
 
     public UserDTO mapUserToDTO(User user) {
-
+        UserDTO userDTO = new UserDTO();
         userDTO.setAge(user.getAge());
         userDTO.setRoles(user.getRoles()
                 .stream()
                 .map(Role::getName)
                 .collect(Collectors.toList()));
-        ;
+
         userDTO.setId(user.getId());
         userDTO.setEmail(user.getEmail());
         userDTO.setPassword(user.getPassword());

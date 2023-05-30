@@ -21,9 +21,18 @@
             margin-bottom: 10px;
         }
 
+
+        .btn-info {
+            margin-right: 10px;
+        }
+
+        .btn-danger {
+            margin-left: 10px;
+        }
+
     </style>
 </head>
-<body>
+<body onload="updateUsersTable()">
 
 <div class="container-fluid ">
 
@@ -102,28 +111,40 @@
                         </tr>
                         </thead>
                         <tbody class="text-center">
-                        <tr th:each="user : ${users}">
-                            <th>[[${user.id}]]</th>
-                            <td>[[${user.name}]]</td>
-                            <td>[[${user.age}]]</td>
-                            <td>[[${user.email}]]</td>
-                            <td>
-                                <ul>
-                                    <li th:each="role : ${user.roles}" style="list-style-type: none;"
-                                        th:text="${role.name}"></li>
-                                </ul>
-                            </td>
-                            <td>
-                                <a class="btn btn-info" data-toggle="modal" data-target="#userEditDialog"
-                                   th:data-userId="${user.id}">Edit</a>
-                                <a class="btn btn-danger" data-toggle="modal" data-target="#userDeleteDialog"
-                                   th:data-userId="${user.id}">Delete</a>
-                            </td>
-                        </tr>
                         </tbody>
                     </table>
                 </div>
-
+                <script>
+                    function updateUsersTable() {
+                        $.getJSON('/api/users/users', function (data) {
+                            $('table tbody').empty();
+                            $.each(data, function (index, user) {
+                                var row = $('<tr>');
+                                row.append($('<td>').text(user.id));
+                                row.append($('<td>').text(user.name));
+                                row.append($('<td>').text(user.age));
+                                row.append($('<td>').text(user.email));
+                                row.append($('<td>').text(user.roles));
+                                var actions = $('<td>');
+                                actions.append($('<a>').addClass('btn btn-info')
+                                    .attr('data-toggle', 'modal')
+                                    .attr('data-target', '#userEditDialog')
+                                    .attr('data-userid', user.id)
+                                    .text('edit'));
+                                actions.append($('<a>').addClass('btn btn-danger')
+                                    .attr('data-toggle', 'modal')
+                                    .attr('data-target', '#userDeleteDialog')
+                                    .attr('data-userid', user.id)
+                                    .text('delete'));
+                                row.append(actions);
+                                $('table tbody').append(row);
+                            });
+                        })
+                            .fail(function (error) {
+                                console.error(error);
+                            });
+                    }
+                </script>
 
             </div>
         </div>
@@ -241,7 +262,9 @@
     $(document).ready(function () {
         $("#myModal").modal('show');
     });
-
+    $(document).ready(function () {
+        $("#myModal").modal('show');
+    });
 
 </script>
 <script>
@@ -306,21 +329,27 @@
             user.id = modal.find('#user-id').val()
         }
 
+
         $.ajax({
             url: '/api/users',
-            type: 'POST',
+            type: 'PUT',
             data: JSON.stringify(user),
             contentType: "application/json; charset=utf-8",
-            dataType: "json",
+            dataType: "text",
             success: () => {
-                location.reload()
+                updateUsersTable();
+                modal.modal('hide');
             },
-            //  error: (err) => {
-            //      alert(err);
-            // }
-        })
+            error: function (xhr, textStatus, errorThrown) {
 
-        modal.modal('hide');
+
+                console.error('Error:', errorThrown);
+                updateUsersTable();
+                modal.modal('hide');
+            }
+        }).catch(function (error) {
+            console.log("Error parsing JSON response:", error);
+        });
     });
 
     $('#userDeleteDialog').on('shown.bs.modal', function (event) {
@@ -355,9 +384,9 @@
     $('#delete-user-button').click(function () {
         let modal = $('#userDeleteDialog');
         let roles = [];
-        modal.find('input[type=checkbox]').each(function () { // проходим по всем чекбоксам
-            if ($(this).is(':checked')) { // если чекбокс отмечен
-                roles.push($(this).val()); // добавляем значение в массив ролей
+        modal.find('input[type=checkbox]').each(function () {
+            if ($(this).is(':checked')) {
+                roles.push($(this).val());
             }
         });
         let user = {
@@ -365,7 +394,7 @@
             age: modal.find('#user_age').val(),
             email: modal.find('#user_email').val(),
             password: modal.find('#user_password').val(),
-            roles: roles // добавляем массив ролей в объект пользователя
+            roles: roles
         };
         if (modal.find('#user_id').val()) {
             user.id = modal.find('#user_id').val()
@@ -376,18 +405,19 @@
             type: 'DELETE',
             data: JSON.stringify(user.id),
             contentType: "application/json; charset=utf-8",
-            dataType: "json",
+            dataType: "text",
             success: () => {
-                location.reload()
+                updateUsersTable();
+                modal.modal('hide');
             },
-            //  error: (err) => {
-            //      alert(err);
-            // }
+            error: function (xhr, textStatus, errorThrown) {
+                console.error('Error:', errorThrown);
+                document.getElementById("error-message").innerHTML = "Произошла ошибка: " + err.message;
+            }
         })
-
-        modal.modal('hide');
     })
 
 </script>
+
 </body>
 </html>

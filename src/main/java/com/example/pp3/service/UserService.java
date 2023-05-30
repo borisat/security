@@ -18,5 +18,5 @@ public interface UserService {
 
     User getUserByName(String name);
 
-
+    List<UserDTO> getUsersDTO();
 }

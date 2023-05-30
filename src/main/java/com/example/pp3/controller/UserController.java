@@ -19,14 +19,6 @@ import java.util.stream.Collectors;
 @Controller
 public class UserController {
 
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private RoleDAO roleDAO;
-
-    @Autowired
-    private UserMapperService userMapperService;
 
     @GetMapping("/")
     public String hello() {
@@ -34,31 +26,22 @@ public class UserController {
     }
 
     @GetMapping("/user")
-    public String user(Model model, Principal principal) {
-        model.addAttribute("users", userService.getUsers());
-        User user = userService.getUserByName(principal.getName());
-        model.addAttribute("username", user.getUsername());
-        model.addAttribute("email", user.getEmail());
-        model.addAttribute("age", user.getAge());
-        model.addAttribute("pass", user.getPassword());
-        model.addAttribute("roles", user.getRoles().stream()
-                .map(Role::getName)
-                .collect(Collectors.joining(", ")));
-
+    public String user() {
         return "users/user";
     }
 
     @GetMapping("/users")
-    public String getAll(Model model) {
-        model.addAttribute("users", userService.getUsers());
+    public String getAll() {
         return "users/users";
     }
 
+    @GetMapping("/newUser")
+    public String newUser() {
+        return "users/new_user";
+    }
 
     @GetMapping("/register")
-    public String register(Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
+    public String register() {
         return "users/register";
     }
 }

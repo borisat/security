@@ -41,12 +41,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/deleteUser/{id}",
                         "/makeAdmin/{id}",
                         "/api/users",
-                        "/api/user**",
+                        "/api/users/account",
                         "/currentUser",
                         "/editUser/{id}").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/api/users/user",
                         "/user").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')") // разрешаем входить на /user пользователям с ролью User
-                .antMatchers("/", "register").permitAll() // доступность всем
+                .antMatchers("/", "/api/users/account", "register").permitAll() // доступность всем
                 .and().formLogin()  // Spring сам подставит свою логин форму
                 .successHandler(successUserHandler); // подключаем наш SuccessHandler для перенеправления по ролям
 
@@ -64,8 +64,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .successHandler(successUserHandler); // подключаем наш SuccessHandler для перенеправления по ролям
     }
 
-    // Необходимо для шифрования паролей
-    // В данном примере не используется, отключен
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
