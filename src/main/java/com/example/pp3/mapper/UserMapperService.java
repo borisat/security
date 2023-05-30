@@ -1,13 +1,15 @@
-package com.example.pp3.service;
+package com.example.pp3.mapper;
 
 import com.example.pp3.dao.RoleDAO;
 import com.example.pp3.dao.UserDAO;
 import com.example.pp3.dto.UserDTO;
-import com.example.pp3.exception.ControllerException;
+import com.example.pp3.exception.EmailValidationException;
+import com.example.pp3.exception.NonUniqueUsernameException;
 import com.example.pp3.model.Role;
 import com.example.pp3.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -38,7 +40,7 @@ public class UserMapperService {
         return userDTO;
     }
 
-    public User mapDTOToUser(UserDTO userDTO) throws ControllerException {
+    public User mapDTOToUser(UserDTO userDTO) throws NonUniqueUsernameException, EmailValidationException {
 
         User user = new User();
 

@@ -2,7 +2,9 @@ package com.example.pp3.service;
 
 import com.example.pp3.dao.UserDAO;
 import com.example.pp3.dto.UserDTO;
-import com.example.pp3.exception.ControllerException;
+import com.example.pp3.exception.EmailValidationException;
+import com.example.pp3.exception.NonUniqueUsernameException;
+import com.example.pp3.mapper.UserMapperService;
 import com.example.pp3.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -47,14 +49,14 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public void saveUser(User user) throws ControllerException {
+    public void saveUser(User user) throws NonUniqueUsernameException, EmailValidationException {
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         try {
             userDAO.save(user);
         } catch (DataIntegrityViolationException e) {
-            throw new ControllerException("not unique username", e);
+            throw new NonUniqueUsernameException(user.getUsername());
         } catch (Exception e) {
-            throw new ControllerException("Incorrect email", e);
+            throw new EmailValidationException(user.getEmail());
         }
     }
 
@@ -70,7 +72,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User getUserFromDTO(UserDTO userDTO) throws ControllerException {
+    public User getUserFromDTO(UserDTO userDTO) throws NonUniqueUsernameException, EmailValidationException {
         return userMapperService.mapDTOToUser(userDTO);
     }
 
