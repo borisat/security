@@ -40,7 +40,7 @@ public class UserMapperService {
         return userDTO;
     }
 
-    public User mapDTOToUser(UserDTO userDTO) throws NonUniqueUsernameException, EmailValidationException {
+    public User mapDTOToUser(UserDTO userDTO) {
 
         User user = new User();
 
