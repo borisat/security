@@ -70,7 +70,17 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
+    public User getUserFromDTO(UserDTO userDTO) throws ControllerException {
+        return userMapperService.mapDTOToUser(userDTO);
+    }
+
+    @Override
     public User getUserByName(String name) {
         return userDAO.getUserByUsername(name);
+    }
+
+    @Override
+    public UserDTO getUserDTOByID(int id) {
+        return userMapperService.mapUserToDTO(getUserByID(id));
     }
 }

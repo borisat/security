@@ -16,7 +16,13 @@ public interface UserService {
 
     User getUserByID(int id);
 
+    UserDTO getUserDTOByID(int id);
+
     User getUserByName(String name);
 
+    User getUserFromDTO(UserDTO userDTO) throws ControllerException;
+
     List<UserDTO> getUsersDTO();
+
+
 }

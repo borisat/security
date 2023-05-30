@@ -24,8 +24,7 @@ public class UserRestController {
 
     @Autowired
     private UserService userService;
-    @Autowired
-    private UserMapperService userMapperService;
+
 
     public UserRestController(UserService userService) {
         this.userService = userService;
@@ -33,12 +32,12 @@ public class UserRestController {
 
     @GetMapping("/{userId}")
     public UserDTO findById(@PathVariable int userId) {
-        return userMapperService.mapUserToDTO(userService.getUserByID(userId));
+        return userService.getUserDTOByID(userId);
     }
 
     @GetMapping
     public UserDTO userProfile(@AuthenticationPrincipal User user) {
-        return userMapperService.mapUserToDTO(user);
+        return userService.getUserDTOByID(user.getId());
     }
 
     @GetMapping("/users")
@@ -49,7 +48,7 @@ public class UserRestController {
     @PostMapping("/account")
     public ResponseEntity<String> put(@Valid @RequestBody UserDTO userDTO) {
         try {
-            userService.saveUser(userMapperService.mapDTOToUser(userDTO));
+            userService.saveUser(userService.getUserFromDTO(userDTO));
             return new ResponseEntity<>("User saved successfully", HttpStatus.OK);
         } catch (ControllerException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -59,7 +58,7 @@ public class UserRestController {
     @PutMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void createUser(@Valid @RequestBody UserDTO userDTO) throws ControllerException {
-        userService.saveUser(userMapperService.mapDTOToUser(userDTO));
+        userService.saveUser(userService.getUserFromDTO(userDTO));
     }
 
     @DeleteMapping
