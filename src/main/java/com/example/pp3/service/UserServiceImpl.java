@@ -104,7 +104,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
 
-    @Scheduled(fixedDelay = 86400000) //раз в сутки
+    @Scheduled(fixedDelayString = "${messages.notification-send-delay}")
     public void sendBirthdayNotification() {
         List<User> adminList = userDAO.findByRoles(roleDAO.findByName("ROLE_ADMIN").get(0));
         List<User> bDayUserList = this.getUsers();
