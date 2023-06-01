@@ -105,6 +105,7 @@
                             <th>Id</th>
                             <th>Name</th>
                             <th>Age</th>
+                            <th>BDay</th>
                             <th>Email</th>
                             <th>Roles</th>
                             <th>Actions</th>
@@ -123,6 +124,7 @@
                                 row.append($('<td>').text(user.id));
                                 row.append($('<td>').text(user.name));
                                 row.append($('<td>').text(user.age));
+                                row.append($('<td>').text(user.birthDate));
                                 row.append($('<td>').text(user.email));
                                 row.append($('<td>').text(user.roles));
                                 var actions = $('<td>');
@@ -174,12 +176,16 @@
                         <input type="number" class="form-control" id="user-age">
                     </div>
                     <div class="form-group">
+                        <label for="user-birthDate" class="col-form-label">BDay</label>
+                        <input type="date" class="form-control" id="user-birthDate" name="user-birthDate">
+                    </div>
+                    <div class="form-group">
                         <label for="user-email" class="col-form-label">Email</label>
                         <input type="text" class="form-control" id="user-email">
                     </div>
                     <div class="form-group">
                         <label for="user-password" class="col-form-label">Password</label>
-                        <input type="text" class="form-control" id="user-password">
+                        <input type="password" class="form-control" id="user-password">
                     </div>
                     <div class="form-group">
                         <div class="checkbox">
@@ -221,12 +227,16 @@
                         <input type="number" class="form-control" id="user_age" readonly>
                     </div>
                     <div class="form-group">
+                        <label for="user-birthDate" class="col-form-label">BDay</label>
+                        <input type="date" class="form-control" id="user_birthDate">
+                    </div>
+                    <div class="form-group">
                         <label for="user-email" class="col-form-label">Email</label>
                         <input type="text" class="form-control" id="user_email" readonly>
                     </div>
                     <div class="form-group">
                         <label for="user-password" class="col-form-label">Password</label>
-                        <input type="text" class="form-control" id="user_password" readonly>
+                        <input type="password" class="form-control" id="user_password" readonly>
                     </div>
                     <div class="form-group">
                         <div class="checkbox">
@@ -249,6 +259,9 @@
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"
         crossorigin="anonymous"></script>
@@ -259,6 +272,9 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 <script>
+    // $(function() {
+    //     $("#user-birthDate").datepicker();
+    // });
     $(document).ready(function () {
         $("#myModal").modal('show');
     });
@@ -292,6 +308,7 @@
                     modal.find('#user-id').val(data.id)
                     modal.find('#user-name').val(data.name)
                     modal.find('#user-age').val(data.age)
+                    modal.find('#user-birthDate').val(data.birthDate)
                     modal.find('#user-email').val(data.email)
                     modal.find('#user-password').val(data.password)
 
@@ -321,6 +338,7 @@
         let user = {
             name: modal.find('#user-name').val(),
             age: modal.find('#user-age').val(),
+            birthDate: modal.find('#user-birthDate').val(),
             email: modal.find('#user-email').val(),
             password: modal.find('#user-password').val(),
             roles: roles // добавляем массив ролей в объект пользователя
@@ -341,8 +359,6 @@
                 modal.modal('hide');
             },
             error: function (xhr, textStatus, errorThrown) {
-
-
                 console.error('Error:', errorThrown);
                 updateUsersTable();
                 modal.modal('hide');
@@ -353,8 +369,8 @@
     });
 
     $('#userDeleteDialog').on('shown.bs.modal', function (event) {
-        let button = $(event.relatedTarget) // Button that triggered the modal
-        let userId = button.data('userid') // Extract info from data-* attributes
+        let button = $(event.relatedTarget)
+        let userId = button.data('userid')
         if (userId) {
             $.get({
                 url: '/api/users/' + userId,
@@ -363,6 +379,7 @@
                     modal.find('#user_id').val(data.id)
                     modal.find('#user_name').val(data.name)
                     modal.find('#user_age').val(data.age)
+                    modal.find('#user_birthDate').val(data.birthDate)
                     modal.find('#user_email').val(data.email)
                     modal.find('#user_password').val(data.password)
 

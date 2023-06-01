@@ -9,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
 
@@ -45,6 +46,7 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
             System.out.println("admin exists");
         } else {
             User admin = new User("admin", "admin");
+            admin.setBirthDate(LocalDate.now());
             admin.setPassword(new BCryptPasswordEncoder().encode(admin.getPassword()));
             List<Role> roles = roleDAO.findAll();
             admin.setRoles(new HashSet<>(roles));

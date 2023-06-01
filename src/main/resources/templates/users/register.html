@@ -103,6 +103,9 @@
                             <input type="number" id="user_age" required placeholder="User age" min="18" max="99">
                         </div>
 
+                        <div class="form-group"><label for="user_birthDate">Age:</label>
+                            <input type="date" id="user_birthDate" required placeholder="Bday">
+                        </div>
 
                         <div class="form-group"><label for="user_email">Email:</label>
                             <input type="email" id="user_email" required placeholder="Email">
@@ -110,7 +113,7 @@
 
 
                         <div class="form-group"><label for="user_password">Password:</label>
-                            <input type="text" id="user_password" required placeholder="Password">
+                            <input type="password" id="user_password" required placeholder="Password">
                         </div>
 
 
@@ -160,6 +163,7 @@
         var user = {
             name: $('#user_name').val(),
             age: $('#user_age').val(),
+            birthDate: $('#user_birthDate').val(),
             email: $('#user_email').val(),
             password: $('#user_password').val(),
             roles: $('input[name="user_roles[]"]:checked').map(function () { // изменен селектор
@@ -169,18 +173,18 @@
 
         $.ajax({
             url: "/api/users/account",
-            type: "POST",
+            type: "post",
             data: JSON.stringify(user),
             contentType: "application/json; charset=utf-8",
             dataType: "text",
             async: false,
             success: function (data) {
-                console.log('User saved:', data);
+                console.log('user saved:', data);
                 window.location.href = "/users";
             },
             error: function error(err) {
                 console.log(err);
-                document.getElementById("error-message").innerHTML = "Произошла ошибка: " + err.message;
+                document.getElementById("error-message").innerHTML = "произошла ошибка: " + err.message;
             }
         });
 

@@ -128,14 +128,16 @@
                             <input type="number" id="user_age" required placeholder="User age" min="18" max="99">
                         </div>
 
+                        <div class="form-group"><label for="user_birthDate">Bday:</label>
+                            <input type="date" id="user_birthDate" required placeholder="Bday">
+                        </div>
 
                         <div class="form-group"><label for="user_email">Email:</label>
                             <input type="text" id="user_email" required placeholder="Email">
                         </div>
 
-
                         <div class="form-group"><label for="user_password">Password:</label>
-                            <input type="text" id="user_password" required placeholder="Password">
+                            <input type="password" id="user_password" required placeholder="Password">
                         </div>
 
 
@@ -205,6 +207,7 @@
             var user = {
                 name: $('#user_name').val(),
                 age: $('#user_age').val(),
+                birthDate: $('#user_birthDate').val(),
                 email: $('#user_email').val(),
                 password: $('#user_password').val(),
                 roles: $('input[name="user_roles[]"]:checked').map(function () { // изменен селектор

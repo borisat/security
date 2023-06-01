@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Set;
 
@@ -19,12 +20,24 @@ public class User implements UserDetails {
     @Column(name = "name", nullable = false, unique = true)
     private String name;
 
-    @Column(name = "age", nullable = false)
+    @Column(name = "age")
     private byte age;
+
+    @Column(name = "birthDate")
+    private LocalDate birthDate;
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
 
     @Column(name = "email")
     @Email(message = "Invalid email address")
     private String email;
+
 
     public User(Set<Role> roles) {
         this.roles = roles;
@@ -84,10 +97,6 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
-    public Set<Role> addRole(Role role) {
-        this.getRoles().add(role);
-        return this.getRoles();
-    }
 
     public User(String name, byte age) {
         this.name = name;
@@ -99,6 +108,13 @@ public class User implements UserDetails {
         this.age = age;
         this.email = email;
     }
+
+    public User(String name, LocalDate birthDate, String email) {
+        this.name = name;
+        this.birthDate = birthDate;
+        this.email = email;
+    }
+
 
     public User(String name, String password) {
         this.name = name;

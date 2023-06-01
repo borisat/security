@@ -8,15 +8,25 @@
     <option name="showLibraryBeans" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9111d2af-f5e2-4172-ad24-2b2614b780da" name="Changes" comment="Поправил рест">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/exception/EmailValidationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/exception/NonUniqueUsernameException.java" afterDir="false" />
+    <list default="true" id="9111d2af-f5e2-4172-ad24-2b2614b780da" name="Changes" comment="Fixed exceptions, DTO package">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/MessageProps.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/model/EmailDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/service/EmailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/service/EmailServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/controller/UserRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/controller/UserRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/service/UserMapperService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/mapper/UserMapperService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/CommandLineAppStartupRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/CommandLineAppStartupRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/dto/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/mapper/UserMapperService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/mapper/UserMapperService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/users/new_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/users/new_user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/users/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/users/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/users/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/users/user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/users/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/users/users.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +36,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="HTML File" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -44,32 +54,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ноут/Downloads/SpringBootRegistrationLoginAddRoles/SpringBootRegistrationLoginAddRoles&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;show.run.dashboard.notification&quot;: &quot;false&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;23005b4022e8891e764e683d64818988&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/ноут/Downloads/SpringBootRegistrationLoginAddRoles/SpringBootRegistrationLoginAddRoles",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "show.run.dashboard.notification": "false",
+    "spring.configuration.checksum": "23005b4022e8891e764e683d64818988"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ноут\IdeaProjects\pp 2.3.1\src\main\resources\templates\users" />
@@ -142,7 +152,8 @@
       <workItem from="1684937612235" duration="34844000" />
       <workItem from="1685091431612" duration="4066000" />
       <workItem from="1685095637695" duration="22023000" />
-      <workItem from="1685167533876" duration="51329000" />
+      <workItem from="1685167533876" duration="81209000" />
+      <workItem from="1685606014119" duration="12829000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1683908429968</created>
@@ -249,7 +260,21 @@
       <option name="project" value="LOCAL" />
       <updated>1685445611851</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Fixed exceptions, DTO package">
+      <created>1685454309588</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1685454309588</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Fixed exceptions, DTO package">
+      <created>1685454408371</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1685454408371</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,7 +297,8 @@
     <MESSAGE value="Рест поправил" />
     <MESSAGE value="commit" />
     <MESSAGE value="Поправил рест" />
-    <option name="LAST_COMMIT_MESSAGE" value="Поправил рест" />
+    <MESSAGE value="Fixed exceptions, DTO package" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed exceptions, DTO package" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -280,26 +306,26 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/resources/templates/users/users.html</url>
-          <line>354</line>
-          <option name="timeStamp" value="65" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/main/resources/templates/users/users.html</url>
-          <line>270</line>
+          <line>286</line>
           <option name="timeStamp" value="66" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/resources/templates/users/users.html</url>
-          <line>283</line>
+          <line>299</line>
           <option name="timeStamp" value="67" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/pp3/controller/UserRestController.java</url>
-          <line>46</line>
-          <properties class="com.example.pp3.controller.UserRestController" method="put">
+          <line>41</line>
+          <properties class="com.example.pp3.controller.UserRestController" method="getUsers">
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="104" />
+          <option name="timeStamp" value="117" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/pp3/controller/UserRestController.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="118" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

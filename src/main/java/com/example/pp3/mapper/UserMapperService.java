@@ -3,13 +3,12 @@ package com.example.pp3.mapper;
 import com.example.pp3.dao.RoleDAO;
 import com.example.pp3.dao.UserDAO;
 import com.example.pp3.dto.UserDTO;
-import com.example.pp3.exception.EmailValidationException;
-import com.example.pp3.exception.NonUniqueUsernameException;
 import com.example.pp3.model.Role;
 import com.example.pp3.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -26,7 +25,7 @@ public class UserMapperService {
 
     public UserDTO mapUserToDTO(User user) {
         UserDTO userDTO = new UserDTO();
-        userDTO.setAge(user.getAge());
+        userDTO.setBirtDate(user.getBirthDate().toString());
         userDTO.setRoles(user.getRoles()
                 .stream()
                 .map(Role::getName)
@@ -59,7 +58,7 @@ public class UserMapperService {
         Set<Role> roleSetFromDTO = new HashSet<>(roles1);
 
         user.setRoles(roleSetFromDTO);
-        user.setAge(userDTO.getAge());
+        user.setBirthDate(LocalDate.parse(userDTO.getBirthDate()));
         user.setEmail(userDTO.getEmail());
         user.setId(userDTO.getId());
         user.setPassword(userDTO.getPassword());

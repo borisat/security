@@ -1,7 +1,5 @@
 package com.example.pp3.dto;
 
-import org.springframework.stereotype.Component;
-
 import java.util.List;
 
 public class UserDTO {
@@ -11,6 +9,16 @@ public class UserDTO {
     private byte age;
     private String email;
     private String password;
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirtDate(String birtDate) {
+        this.birthDate = birtDate;
+    }
+
+    private String birthDate;
 
     private List<String> roles;
 
@@ -74,4 +82,14 @@ public class UserDTO {
         this.password = password;
         this.roles = roles;
     }
+
+    public UserDTO(int id, String name, String birthDate, String email, String password, List<String> roles) {
+        this.id = id;
+        this.name = name;
+        this.birthDate = birthDate;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+    }
+
 }
