@@ -5,15 +5,15 @@ spring:
     show-sql: true
     hibernate.ddl: true
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: 2Ldflwfnm0
+    url: ${db_url}
+    username: ${db_login}
+    password: ${db_password}
     driver-class-name: org.postgresql.Driver
   mail:
     host: smtp.gmail.com
     port: 587
-    username: mycrudapp
-    password: wdgsfjfagulixoqc
+    username: ${mail_login}
+    password: ${mail_password}
     properties:
       mail:
         smtp:

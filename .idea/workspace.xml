@@ -10,8 +10,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9111d2af-f5e2-4172-ad24-2b2614b780da" name="Changes" comment="Bday notification done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/MessageProps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/MessageProps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/service/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +54,7 @@
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "settings.editor.selected.configurable": "advanced.settings",
     "show.run.dashboard.notification": "false",
     "spring.configuration.checksum": "23005b4022e8891e764e683d64818988"
   },
@@ -83,6 +81,13 @@
     </configuration>
     <configuration name="Application (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <option name="ACTIVE_PROFILES" />
+      <envs>
+        <env name="db_login" value="postgres" />
+        <env name="db_password" value="2Ldflwfnm0" />
+        <env name="db_url" value="jdbc:postgresql://localhost:5432/postgres" />
+        <env name="mail_login" value="mycrudapp" />
+        <env name="mail_password" value="wdgsfjfagulixoqc" />
+      </envs>
       <module name="pp3" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.pp3.Application" />
       <method v="2">
@@ -109,6 +114,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JavaScript Debug.new_user.html" />
+      <item itemvalue="JavaScript Debug.users.html" />
+      <item itemvalue="Spring Boot.Application (1)" />
+      <item itemvalue="Spring Boot.Application (2)" />
+      <item itemvalue="Spring Boot.Application" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JavaScript Debug.new_user.html" />
@@ -140,6 +152,8 @@
       <workItem from="1685095637695" duration="22023000" />
       <workItem from="1685167533876" duration="81209000" />
       <workItem from="1685606014119" duration="13533000" />
+      <workItem from="1685624951559" duration="2105000" />
+      <workItem from="1685692721438" duration="3821000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1683908429968</created>
