@@ -99,9 +99,9 @@
                             <input type="text" id="user_name" required placeholder="User Name">
                         </div>
 
-                        <div class="form-group"><label for="user_age">Age:</label>
-                            <input type="number" id="user_age" required placeholder="User age" min="18" max="99">
-                        </div>
+                        <!--                        <div class="form-group"><label for="user_age">Age:</label>-->
+                        <!--                            <input type="number" id="user_age" required placeholder="User age" min="18" max="99">-->
+                        <!--                        </div>-->
 
                         <div class="form-group"><label for="user_birthDate">Age:</label>
                             <input type="date" id="user_birthDate" required placeholder="Bday">
@@ -162,7 +162,7 @@
     $('#user-form').submit(function (event) {
         var user = {
             name: $('#user_name').val(),
-            age: $('#user_age').val(),
+            // age: $('#user_age').val(),
             birthDate: $('#user_birthDate').val(),
             email: $('#user_email').val(),
             password: $('#user_password').val(),

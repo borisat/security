@@ -29,9 +29,13 @@
     <script>
         $(document).ready(function () {
             $.get('/api/users/', function (data) {
+                var birthDate = new Date(data.birthDate);
+                var ageDifMs = Date.now() - birthDate.getTime();
+                var ageDate = new Date(ageDifMs);
+                var age = Math.abs(ageDate.getUTCFullYear() - 1970);
                 $('#user_id').text(data.id);
                 $('#user_name').text(data.name);
-                $('#user_age').text(data.age);
+                $('#user_age').text(age);
                 $('#user_birthDate').text(data.birthDate);
                 $('#user_email').text(data.email);
                 $('#user_roles').text(data.roles);
@@ -273,9 +277,13 @@
                 url: '/api/users/' + userId,
                 success: (data) => {
                     let modal = $(this)
+                    var birthDate = new Date(data.birthDate);
+                    var ageDifMs = Date.now() - birthDate.getTime();
+                    var ageDate = new Date(ageDifMs);
+                    var age = Math.abs(ageDate.getUTCFullYear() - 1970);
                     modal.find('#user-id').val(data.id)
                     modal.find('#user-name').val(data.name)
-                    modal.find('#user-age').val(data.age)
+                    modal.find('#user-age').val(age)
                     modal.find('#user-email').val(data.email)
                     modal.find('#user-password').val(data.password)
 

@@ -20,9 +20,6 @@ public class User implements UserDetails {
     @Column(name = "name", nullable = false, unique = true)
     private String name;
 
-    @Column(name = "age")
-    private byte age;
-
     @Column(name = "birthDate")
     private LocalDate birthDate;
 
@@ -98,17 +95,6 @@ public class User implements UserDetails {
     }
 
 
-    public User(String name, byte age) {
-        this.name = name;
-        this.age = age;
-    }
-
-    public User(String name, byte age, String email) {
-        this.name = name;
-        this.age = age;
-        this.email = email;
-    }
-
     public User(String name, LocalDate birthDate, String email) {
         this.name = name;
         this.birthDate = birthDate;
@@ -135,13 +121,6 @@ public class User implements UserDetails {
         this.name = name;
     }
 
-    public byte getAge() {
-        return age;
-    }
-
-    public void setAge(byte age) {
-        this.age = age;
-    }
 
     public String getEmail() {
         return email;

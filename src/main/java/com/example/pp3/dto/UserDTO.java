@@ -6,7 +6,6 @@ public class UserDTO {
 
     private int id;
     private String name;
-    private byte age;
     private String email;
     private String password;
 
@@ -42,14 +41,6 @@ public class UserDTO {
         this.name = name;
     }
 
-    public byte getAge() {
-        return age;
-    }
-
-    public void setAge(byte age) {
-        this.age = age;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -71,24 +62,6 @@ public class UserDTO {
     }
 
     public void setRoles(List<String> roles) {
-        this.roles = roles;
-    }
-
-    public UserDTO(int id, String name, byte age, String email, String password, List<String> roles) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.email = email;
-        this.password = password;
-        this.roles = roles;
-    }
-
-    public UserDTO(int id, String name, String birthDate, String email, String password, List<String> roles) {
-        this.id = id;
-        this.name = name;
-        this.birthDate = birthDate;
-        this.email = email;
-        this.password = password;
         this.roles = roles;
     }
 
