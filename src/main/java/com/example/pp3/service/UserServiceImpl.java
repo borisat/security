@@ -34,16 +34,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     private UserDAO userDAO;
 
     @Autowired
-    private RoleDAO roleDAO;
-
-    @Autowired
     private UserMapperService userMapperService;
 
-    @Autowired
-    private EmailService emailService;
 
-    @Autowired
-    private MessageProps messageProps;
 
     @Override
     public List<User> getUsers() {
@@ -102,42 +95,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public UserDTO getUserDTOByID(int id) {
         return userMapperService.mapUserToDTO(getUserByID(id));
     }
-
-
-    @Scheduled(fixedDelayString = "${messages.notification-send-delay}")
-    public void sendBirthdayNotification() {
-        List<User> adminList = userDAO.findByRoles(roleDAO.findByName("ROLE_ADMIN").get(0));
-        List<User> bDayUserList = this.getUsers();
-        bDayUserList.removeIf(user -> !checkUserBday(user));
-
-        String subject = "Поздравь";
-        String messageBody = bDayUserList
-                .stream()
-                .map(user -> user.getUsername() + " " + user.getBirthDate() + "\n")
-                .collect(Collectors.joining());
-
-
-        adminList.forEach(user -> emailService.
-                sendSimpleMail(new EmailDetails(user.getEmail(), messageBody, subject)));
-    }
-
-    public boolean checkUserBday(User user) {
-
-        LocalDate localDate = LocalDate.of(LocalDate.now().getYear(),
-                LocalDate.now().getMonth(),
-                LocalDate.now().getDayOfMonth());
-        LocalDate userBday = LocalDate.of(LocalDate.now().getYear(),
-                user.getBirthDate().getMonth(),
-                user.getBirthDate().getDayOfMonth());
-
-        Period period = Period.between(localDate, userBday);
-
-        if (period.getDays() == messageProps.getbDayNotificationPeriod()) {
-            return true;
-        }
-        return false;
-    }
-
 
 }
 

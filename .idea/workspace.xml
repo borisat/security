@@ -8,8 +8,10 @@
     <option name="showLibraryBeans" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9111d2af-f5e2-4172-ad24-2b2614b780da" name="Changes" comment="Bday notification done">
+    <list default="true" id="9111d2af-f5e2-4172-ad24-2b2614b780da" name="Changes" comment="Env variables done">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/scheduled/BirthdayScheduler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/service/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -153,7 +155,7 @@
       <workItem from="1685167533876" duration="81209000" />
       <workItem from="1685606014119" duration="13533000" />
       <workItem from="1685624951559" duration="2105000" />
-      <workItem from="1685692721438" duration="3821000" />
+      <workItem from="1685692721438" duration="6087000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1683908429968</created>
@@ -281,7 +283,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685619429513</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Env variables done">
+      <created>1685701073702</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1685701073702</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,7 +315,8 @@
     <MESSAGE value="Поправил рест" />
     <MESSAGE value="Fixed exceptions, DTO package" />
     <MESSAGE value="Bday notification done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bday notification done" />
+    <MESSAGE value="Env variables done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Env variables done" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -329,6 +339,15 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="117" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/pp3/scheduled/BirthdayScheduler.java</url>
+          <line>32</line>
+          <properties class="com.example.pp3.scheduled.BirthdayScheduler" method="sendBirthdayNotification">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="120" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/pp3/controller/UserRestController.java</url>
