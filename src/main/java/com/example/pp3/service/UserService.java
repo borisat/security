@@ -5,6 +5,8 @@ import com.example.pp3.exception.EmailValidationException;
 import com.example.pp3.exception.NonUniqueUsernameException;
 import com.example.pp3.model.User;
 
+import java.net.UnknownHostException;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface UserService {
@@ -19,11 +21,13 @@ public interface UserService {
 
     UserDTO getUserDTOByID(int id);
 
-    User getUserByName(String name);
+    UserDTO getUserDTOByToken(String token);
+
+    User findUserByEmail(String email);
 
     User getUserFromDTO(UserDTO userDTO) throws NonUniqueUsernameException, EmailValidationException;
 
     List<UserDTO> getUsersDTO();
 
-
+    void updatePassword(UserDTO userDTO);
 }

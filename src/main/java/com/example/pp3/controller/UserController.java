@@ -33,4 +33,10 @@ public class UserController {
     public String register() {
         return "users/register";
     }
+
+    @GetMapping("/forgotPassword")
+    public String forgotPassword() {
+        return "users/forgotPassword";
+    }
+
 }
