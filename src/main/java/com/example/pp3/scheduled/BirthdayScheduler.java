@@ -35,6 +35,10 @@ public class BirthdayScheduler {
         List<User> bDayUserList = userDAO.findAll();
         bDayUserList.removeIf(user -> !checkUserBday(user));
 
+        if (bDayUserList.size() == 0) {
+            return;
+        }
+
         String subject = "Поздравь";
         String messageBody = bDayUserList
                 .stream()
