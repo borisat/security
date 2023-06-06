@@ -1,4 +1,4 @@
-package com.example.pp3;
+package com.example.pp3.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

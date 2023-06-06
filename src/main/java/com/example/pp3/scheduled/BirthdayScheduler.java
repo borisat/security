@@ -1,6 +1,6 @@
 package com.example.pp3.scheduled;
 
-import com.example.pp3.MessageProps;
+import com.example.pp3.properties.MessageProps;
 import com.example.pp3.dao.RoleDAO;
 import com.example.pp3.dao.UserDAO;
 import com.example.pp3.model.EmailDetails;
