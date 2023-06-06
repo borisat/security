@@ -8,24 +8,14 @@
     <option name="showLibraryBeans" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9111d2af-f5e2-4172-ad24-2b2614b780da" name="Changes" comment="Age count done">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/dao/PasswordResetTokenDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/exception/UserNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/model/PasswordResetToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/service/TokenService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/users/forgotPassword.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/users/resetPassword.html" afterDir="false" />
+    <list default="true" id="9111d2af-f5e2-4172-ad24-2b2614b780da" name="Changes" comment="Password reset done">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/exception/InvalidTokenException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/scheduled/TokenScheduler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/controller/UserRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/controller/UserRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/dao/RoleDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/dao/RoleDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/dto/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/service/TokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/service/TokenService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/pp3/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/pp3/service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/users/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/users/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/users/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/users/user.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +27,8 @@
       <list>
         <option value="Kotlin Class" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -169,7 +159,7 @@
       <workItem from="1685167533876" duration="81209000" />
       <workItem from="1685606014119" duration="13533000" />
       <workItem from="1685624951559" duration="2105000" />
-      <workItem from="1685692721438" duration="50131000" />
+      <workItem from="1685692721438" duration="56365000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1683908429968</created>
@@ -318,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685712983773</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Password reset done">
+      <created>1685989701087</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1685989701087</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -346,7 +343,8 @@
     <MESSAGE value="Env variables done" />
     <MESSAGE value="Shdlr pckg done" />
     <MESSAGE value="Age count done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Age count done" />
+    <MESSAGE value="Password reset done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Password reset done" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -376,7 +374,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/pp3/service/UserService.java</url>
-          <line>25</line>
+          <line>26</line>
           <properties class="com.example.pp3.service.UserService" method="findUserByEmail">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -385,7 +383,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/pp3/controller/UserRestController.java</url>
-          <line>101</line>
+          <line>102</line>
           <properties class="com.example.pp3.controller.UserRestController" method="updateUser">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

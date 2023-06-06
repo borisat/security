@@ -1,9 +1,11 @@
 package com.example.pp3.service;
 
+import antlr.Token;
 import com.example.pp3.dao.PasswordResetTokenDAO;
 import com.example.pp3.dao.UserDAO;
 import com.example.pp3.dto.UserDTO;
 import com.example.pp3.exception.EmailValidationException;
+import com.example.pp3.exception.InvalidTokenException;
 import com.example.pp3.exception.NonUniqueUsernameException;
 import com.example.pp3.mapper.UserMapperService;
 import com.example.pp3.model.EmailDetails;
@@ -15,10 +17,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.csrf.InvalidCsrfTokenException;
 import org.springframework.stereotype.Service;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,13 +40,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Autowired
     PasswordResetTokenDAO passwordResetTokenDAO;
 
-    @Override
-    public UserDTO getUserDTOByToken(String token) {
-
-        int userId = passwordResetTokenDAO.findByToken(token).getUser().getId();
-
-        return getUserDTOByID(userId);
-    }
 
     @Override
     public User findUserByEmail(String email) {
@@ -112,6 +109,18 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         User user = userDAO.getById(id);
         user.setPassword(new BCryptPasswordEncoder().encode(userDTO.getPassword()));
         userDAO.save(user);
+    }
+
+    @Override
+    public UserDTO getUserDTOByToken(String token) throws InvalidTokenException {
+        if (passwordResetTokenDAO.findByToken(token) == null ||
+                passwordResetTokenDAO.findByToken(token).getExpiryDateTime().isBefore(LocalDateTime.now())) {
+            throw new InvalidTokenException(token);
+        }
+        int userId = passwordResetTokenDAO.findByToken(token).getUser().getId();
+        PasswordResetToken passwordResetToken = passwordResetTokenDAO.findByToken(token);
+        passwordResetTokenDAO.delete(passwordResetToken);
+        return getUserDTOByID(userId);
     }
 }
 

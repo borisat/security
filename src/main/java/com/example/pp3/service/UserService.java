@@ -2,6 +2,7 @@ package com.example.pp3.service;
 
 import com.example.pp3.dto.UserDTO;
 import com.example.pp3.exception.EmailValidationException;
+import com.example.pp3.exception.InvalidTokenException;
 import com.example.pp3.exception.NonUniqueUsernameException;
 import com.example.pp3.model.User;
 
@@ -21,7 +22,7 @@ public interface UserService {
 
     UserDTO getUserDTOByID(int id);
 
-    UserDTO getUserDTOByToken(String token);
+    UserDTO getUserDTOByToken(String token) throws InvalidTokenException;
 
     User findUserByEmail(String email);
 

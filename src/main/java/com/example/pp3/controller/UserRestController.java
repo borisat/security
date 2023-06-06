@@ -2,6 +2,7 @@ package com.example.pp3.controller;
 
 import com.example.pp3.dto.UserDTO;
 import com.example.pp3.exception.EmailValidationException;
+import com.example.pp3.exception.InvalidTokenException;
 import com.example.pp3.exception.NonUniqueUsernameException;
 import com.example.pp3.exception.UserNotFoundException;
 import com.example.pp3.model.User;
@@ -89,7 +90,7 @@ public class UserRestController {
     }
 
     @GetMapping("/resetPassword/{token}")
-    public ModelAndView showResetPasswordPage(@PathVariable String token) {
+    public ModelAndView showResetPasswordPage(@PathVariable String token) throws InvalidTokenException {
         ModelAndView modelAndView = new ModelAndView();
         UserDTO userDTO = userService.getUserDTOByToken(token);
         modelAndView.addObject("user", userDTO);
